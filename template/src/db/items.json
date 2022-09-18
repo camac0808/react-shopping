@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "card",
+      "price": 100,
+      "soldOut": false,
+      "cart": false,
+      "image": "https://i.ibb.co/ZMzChdK/card.png",
+      "detail": "card 상세페이지 입니다"
+    },
+    {
+      "id": 2,
+      "name": "love",
+      "price": 200,
+      "soldOut": false,
+      "cart": false,
+      "image": "https://i.ibb.co/pPhQYjX/love.png",
+      "detail": "love 상세페이지 입니다"
+    },
+    {
+      "id": 3,
+      "name": "shop",
+      "price": 300,
+      "soldOut": false,
+      "cart": false,
+      "image": "https://i.ibb.co/ZxsbLdQ/shop.jpg",
+      "detail": "shop 상세페이지 입니다"
+    }
+  ]
+}

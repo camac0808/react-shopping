@@ -1,0 +1,7 @@
+{
+  "clients": [
+    { "id": 1, "password": 100, "soldOut": false, "cart": false },
+    { "id": 2, "name": "card", "price": 100, "soldOut": false, "cart": false },
+    { "id": 3, "name": "card", "price": 100, "soldOut": false, "cart": false }
+  ]
+}
