@@ -1,25 +1,13 @@
 import Card from "./Card";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import useFetch from './../hooks/useFetch';
 
 export default function Main() {
-  const [items, setItems] = useState([]);
   const [soldOutClick, setSoldOutClick] = useState(false);
 
-  const getItems = async () => {
-    try {
-      const response = await fetch("http://localhost:3001/items");
-      const data = await response.json();
-      setItems(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getItems();
-  }, []);
-
+  const items = useFetch("http://localhost:3001/items")
   console.log(items);
+  
   return (
     <main>
       <div className="main-button-container">
