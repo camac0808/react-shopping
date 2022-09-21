@@ -2,29 +2,29 @@
   "items": [
     {
       "id": 1,
-      "name": "card",
+      "name": "running",
       "price": 100,
       "soldOut": false,
       "cart": false,
-      "image": "https://i.ibb.co/ZMzChdK/card.png",
+      "image": "img/신발1.jfif",
       "detail": "card 상세페이지 입니다"
     },
     {
       "id": 2,
-      "name": "love",
+      "name": "force",
       "price": 200,
       "soldOut": false,
       "cart": false,
-      "image": "https://i.ibb.co/pPhQYjX/love.png",
+      "image": "img/신발2.jfif",
       "detail": "love 상세페이지 입니다"
     },
     {
       "id": 3,
-      "name": "shop",
+      "name": "air",
       "price": 300,
       "soldOut": false,
       "cart": false,
-      "image": "https://i.ibb.co/ZxsbLdQ/shop.jpg",
+      "image": "img/신발3.jfif",
       "detail": "shop 상세페이지 입니다"
     }
   ]

@@ -9,7 +9,7 @@ export default function Card({ name, price, image, id, showSoldOutBtn, soldOut }
     <div className="card">
       {/* 마우스 hover 이벤트 추가 */}
       <div
-        className="card-image-container                  "
+        className="card-image-container"
         onMouseOver={() => setHover(true)}
         onMouseOut={() => setHover(false)}
       >
@@ -26,7 +26,7 @@ export default function Card({ name, price, image, id, showSoldOutBtn, soldOut }
         </Link>
       </div>
 
-      <div className={sold ? "card-info off" : "card-info"} >
+      <div className={`card-info ${sold ? "off" : ""}`} >
         {/* 카드 이름 가격 */}
         <div className={sold ? "card-tag off" : "card-tag"}>
           <div className="card-name">{name}</div>
@@ -43,12 +43,12 @@ export default function Card({ name, price, image, id, showSoldOutBtn, soldOut }
           <div>
             <input
               type="checkbox"
-              id="soldCheck"
+              id={id}
               name="soldCheck"
               checked={sold}
               onChange={() => setSold((current) => !current)}
             />
-            <label htmlFor="soldCheck" style={{ marginLeft: "5px" }}>
+            <label htmlFor={id} style={{ marginLeft: "5px" }}>
               Sold Out
             </label>
           </div>
@@ -59,9 +59,11 @@ export default function Card({ name, price, image, id, showSoldOutBtn, soldOut }
           <Link to={`/purchase/${id}`}>
             <button disabled={sold}>BUY</button>
           </Link>
-          <button disabled={sold}>
-            <i className="bi bi-bag" style={{ fontSize: "1.2rem" }}></i>
-          </button>
+          <Link to={`/cart`}>
+            <button disabled={sold}>
+              <i className="bi bi-bag" style={{ fontSize: "1.2rem" }}></i>
+            </button>
+          </Link>
         </div>
       </div>
     </div>
