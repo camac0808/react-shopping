@@ -5,6 +5,7 @@ import useFetch from './../hooks/useFetch';
 export default function Main() {
   const [soldOutClick, setSoldOutClick] = useState(false);
 
+  // json-server로 api호출 (json-server --watch ../db/items.json --port 3001)
   const items = useFetch("http://localhost:3001/items")
   console.log(items);
   
@@ -23,6 +24,7 @@ export default function Main() {
         {items.map((item) => {
           return (
             <Card
+              item={item}
               name={item.name}
               key={item.id}
               id={item.id}
