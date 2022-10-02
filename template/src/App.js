@@ -4,6 +4,7 @@ import Detail from "./component/Detail";
 import Purchase from "./component/Purchase";
 import Signup from "./component/Signup";
 import Cart from "./component/Cart";
+import Create from "./component/Create";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path={`/card/:id`} element={<Detail />} />
           <Route path={`/purchase/:id`} element={<Purchase />} />
           <Route path={`/signup`} element={<Signup />} />
+          <Route path={`/create`} element={<Create />} />
         </Routes>
       </Router>
     </div>

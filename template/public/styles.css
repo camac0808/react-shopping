@@ -54,7 +54,7 @@ header .title {
 
 .main-button-container button:hover {
   color: white;
-  background-color: black;  
+  background-color: black;
   border: black 1px solid;
 }
 
@@ -99,6 +99,15 @@ header .title {
 .card-image-container img {
   width: 100%;
   transition: 0.2s all;
+}
+
+/* soldout image */
+.soldout-image {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .hover {
@@ -189,6 +198,20 @@ header .title {
   transition: all 0.1s;
 }
 
+/* 상세 페이지 */
+.detail {
+  width: 450px;
+  margin: 50px auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.detail button {
+  width: 65px;
+  margin-left: 8px;
+}
+
 @media (max-width: 1000px) {
   .main-container {
     flex-direction: column;
@@ -200,6 +223,12 @@ header .title {
 
   .login-button {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .detail {
+    max-width: 400px;
   }
 }
 

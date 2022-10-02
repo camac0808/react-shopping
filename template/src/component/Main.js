@@ -1,18 +1,23 @@
 import Card from "./Card";
 import { useState } from "react";
-import useFetch from './../hooks/useFetch';
+import useFetch from "./../hooks/useFetch";
+import { Link } from 'react-router-dom';
 
 export default function Main() {
   const [soldOutClick, setSoldOutClick] = useState(false);
 
   // json-server로 api호출 (json-server --watch ../db/items.json --port 3001)
-  const items = useFetch("http://localhost:3001/items")
+  const items = useFetch("http://localhost:3001/items");
   console.log(items);
-  
+
   return (
     <main>
       <div className="main-button-container">
-        <button className="btn btn-outline-primary">ADD</button>
+        <Link to={`/create`}>
+          <button className="btn btn-outline-primary">
+            ADD
+          </button>
+        </Link>
         <button
           className="btn btn-outline-primary"
           onClick={() => setSoldOutClick((current) => !current)}

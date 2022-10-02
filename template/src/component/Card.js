@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Card({ item:i, name, price, image, id, showSoldOutBtn, soldOut }) {
+export default function Card({ item: i, name, price, image, id, showSoldOutBtn, soldOut }) {
   // 받아온 item을 변수 i 구조분해 할당해서 useState로 다시 저장
-  const [item, setItem] = useState(i)
+  const [item, setItem] = useState(i);
   const [hover, setHover] = useState(false);
   const [sold, setSold] = useState(soldOut);
 
@@ -29,33 +29,20 @@ export default function Card({ item:i, name, price, image, id, showSoldOutBtn, s
   // DELETE 아이템 삭제하기
   function deleteItem() {
     // DELETE는 메소드만 써주면 된다
-    fetch(`http://localhost:3001/items/${id}`, {  
+    fetch(`http://localhost:3001/items/${id}`, {
       method: "DELETE",
     }).then((response) => {
       if (response.ok) {
         // 이부분은 책 참고해서 다른 방법도 찾아봐야될듯
-        setItem({ id : 0 })
+        setItem({ id: 0 });
       }
-    })
+    });
   }
 
   // delete 버튼 누르면 null 반환
   if (item.id === 0) {
     // 원래는 card를 return하는데 id가 0이면 아예 return을 null로 만들어버려서 없애버린다
     return null;
-  }
-
-  // POST 아이템 추가하기
-  function addItem() {
-    fetch(`http://localhost:3001/items/${id}`, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: {
-        
-      }
-    })
   }
 
   return (
@@ -68,14 +55,17 @@ export default function Card({ item:i, name, price, image, id, showSoldOutBtn, s
       >
         {/* public폴더에 img폴더를 넣으면 경로를 간단하게 img/로 시작할 수 있다 */}
         {sold ? (
-          <img src="img/soldout.png" alt={name}></img>
+          <div>
+            <img className="soldout-image" src="img/soldout.png" alt={name}></img>
+            <img src={`${image}`} alt={name} style={{opacity: 0.3}}></img>
+          </div>
         ) : (
           <img className={hover ? "hover" : ""} src={`${image}`} alt={name}></img>
         )}
 
         {/* 상세페이지 클릭 */}
         <Link to={`/card/${id}`}>
-          {hover ? <button className="more-detail">More Detail</button> : null}
+          {sold ? null : hover ? <button className="more-detail">More Detail</button> : null}
         </Link>
       </div>
 

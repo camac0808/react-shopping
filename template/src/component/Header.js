@@ -8,10 +8,9 @@ export default function Header() {
       </div>
 
       <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><Link href="#" className="nav-link px-2 link-secondary">Home</Link></li>
-        <li><Link href="#" className="nav-link px-2 link-dark">Detail</Link></li>
-        <li><Link href="#" className="nav-link px-2 link-dark">Cart</Link></li>
-        <li><Link href="#" className="nav-link px-2 link-dark">FAQs</Link></li>
+        <li><Link to="/" className="nav-link px-2 link-secondary">Home</Link></li>
+        <li><Link to="#" className="nav-link px-2 link-dark">Cart</Link></li>
+        <li><Link to="#" className="nav-link px-2 link-dark">FAQs</Link></li>
       </ul>
 
       <div className="col-md-3 text-end">
