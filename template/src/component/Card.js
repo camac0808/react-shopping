@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Card({ item: i, name, price, image, id, showSoldOutBtn, soldOut }) {
+  const navigate = useNavigate();
   // 받아온 item을 변수 i 구조분해 할당해서 useState로 다시 저장
   const [item, setItem] = useState(i);
   const [hover, setHover] = useState(false);
@@ -45,6 +46,14 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
     return null;
   }
 
+  // 장바구니 클릭
+  function cartClick() {
+    const confirm = window.confirm("장바구니에 담았습니다. 장바구니를 확인하시겠습니까?");
+    if (confirm === true) {
+      navigate(`/cart`);
+    }
+  }
+
   return (
     <div className="card">
       {/* 마우스 hover 이벤트 추가 */}
@@ -57,10 +66,13 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
         {sold ? (
           <div>
             <img className="soldout-image" src="img/soldout.png" alt={name}></img>
-            <img src={`${image}`} alt={name} style={{opacity: 0.3}}></img>
+            <img src={`${image}`} alt={name} style={{ opacity: 0.3 }}></img>
           </div>
-        ) : (
+        ) : image ? (
           <img className={hover ? "hover" : ""} src={`${image}`} alt={name}></img>
+        ) : (
+          // image가 없으면 noimage로 대체
+          <img src="img/noimage.png" alt={name}></img>
         )}
 
         {/* 상세페이지 클릭 */}
@@ -76,7 +88,7 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
           <div className="card-price">{price}$</div>
         </div>
 
-        {/* x 아이콘 */}
+        {/* 삭제 아이콘 */}
         <div className="x-icon">
           <i className="bi bi-x" onClick={deleteItem}></i>
         </div>
@@ -91,6 +103,7 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
               checked={sold}
               onChange={toggleSoldOut}
             />
+            {/* htmlFor에 id나 name을 적어서 해당 input과 연결한다 => label을 클릭해도 이벤트가 발생한다*/}
             <label htmlFor={id} style={{ marginLeft: "5px" }}>
               Sold Out
             </label>
@@ -102,11 +115,9 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
           <Link to={`/purchase/${id}`}>
             <button disabled={sold}>BUY</button>
           </Link>
-          <Link to={`/cart`}>
-            <button disabled={sold}>
-              <i className="bi bi-bag" style={{ fontSize: "1.2rem" }}></i>
-            </button>
-          </Link>
+          <button disabled={sold} onClick={cartClick}>
+            <i className="bi bi-bag" style={{ fontSize: "1.2rem" }}></i>
+          </button>
         </div>
       </div>
     </div>

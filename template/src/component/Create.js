@@ -45,7 +45,7 @@ export default function Detail() {
       headers: {
         "Content-Type": "application/json",
       },
-      // body: JSON.stringify(item),
+      body: JSON.stringify(item),
       // body: JSON.stringify({
       //   name: nameRef.current.value,
       //   price: priceRef.current.value,
@@ -57,7 +57,8 @@ export default function Detail() {
     }).then((response) => {
       if (response.ok) {
         alert("생성이 완료 되었습니다");
-        // 생성이 완료되면 (조건 충족시) 홈페이지로 이동 => useNavigate (클릭시 이동) => Link
+        // 생성이 완료되면 (조건 충족시) 홈페이지로 이동 => useNavigate // (클릭시 이동) => Link
+        // 뒤로가기 -1 앞으로가기 1
         navigate(`/`);
       }
     });
