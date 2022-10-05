@@ -213,6 +213,22 @@ header .title {
   margin-left: 8px;
 }
 
+/* 장바구니 페이지 cart-page */
+.cart-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 장바구니 cart */
+.cart-container {
+  width: 450px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 30px;
+  margin: 20px;
+}
+
 @media (max-width: 1000px) {
   .main-container {
     flex-direction: column;

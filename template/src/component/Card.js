@@ -48,10 +48,22 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
 
   // 장바구니 클릭
   function cartClick() {
-    const confirm = window.confirm("장바구니에 담았습니다. 장바구니를 확인하시겠습니까?");
-    if (confirm === true) {
-      navigate(`/cart`);
-    }
+    // setSold((current) => !current);
+    fetch(`http://localhost:3001/items/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...item,
+        cart: true,
+      }),
+    }).then((response) => {
+      const confirm = window.confirm("장바구니에 담았습니다. 장바구니를 확인하시겠습니까?");
+      if (confirm === true) {
+        navigate(`/cartpage`);
+      }
+    });
   }
 
   return (

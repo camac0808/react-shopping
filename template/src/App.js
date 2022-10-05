@@ -3,7 +3,7 @@ import Main from "./component/Main";
 import Detail from "./component/Detail";
 import Purchase from "./component/Purchase";
 import Signup from "./component/Signup";
-import Cart from "./component/Cart";
+import Cartpage from "./component/Cartpage";
 import Create from "./component/Create";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -15,7 +15,7 @@ function App() {
         <Header />
         <Routes>
           <Route path={`/`} element={<Main />} />
-          <Route path={`/cart`} element={<Cart />} />
+          <Route path={`/cartpage`} element={<Cartpage />} />
           <Route path={`/card/:id`} element={<Detail />} />
           <Route path={`/purchase/:id`} element={<Purchase />} />
           <Route path={`/signup`} element={<Signup />} />
