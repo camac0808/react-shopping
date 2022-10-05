@@ -5,7 +5,7 @@
       "name": "running",
       "price": 100,
       "soldOut": false,
-      "cart": true,
+      "cart": false,
       "image": "img/신발1.jfif",
       "detail": "card 상세페이지 입니다"
     },
@@ -14,7 +14,7 @@
       "name": "force",
       "price": 200,
       "soldOut": false,
-      "cart": true,
+      "cart": false,
       "image": "img/신발2.jfif",
       "detail": "love 상세페이지 입니다"
     },

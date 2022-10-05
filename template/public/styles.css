@@ -156,6 +156,7 @@ header .title {
   font-size: 1.5rem;
 }
 
+/* 메인화면 Card X 아이콘 */
 .x-icon {
   position: absolute;
   right: 8px;
@@ -166,6 +167,7 @@ header .title {
 .x-icon:hover {
   cursor: pointer;
 }
+
 
 @keyframes fadein {
   from {
@@ -227,6 +229,19 @@ header .title {
   border-radius: 5px;
   padding: 30px;
   margin: 20px;
+  position: relative;
+}
+
+/* 장바구니 X 아이콘 */
+.cart-x-icon {
+  position: absolute;
+  right: 8px;
+  top: 0;
+  font-size: 2rem;
+}
+
+.cart-x-icon:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 1000px) {

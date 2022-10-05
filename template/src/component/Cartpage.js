@@ -9,7 +9,7 @@ export default function Cartpage() {
 
   console.log(filterItem);
   return (
-    <div className='cart-page'>
+    <div className="cart-page">
       {filterItem.map((item) => {
         return (
           <Cart
@@ -18,6 +18,8 @@ export default function Cartpage() {
             image={item.image}
             detail={item.detail}
             key={item.id}
+            id={item.id}
+            item={item}
           />
         );
       })}

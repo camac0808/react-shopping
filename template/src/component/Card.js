@@ -59,9 +59,11 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
         cart: true,
       }),
     }).then((response) => {
-      const confirm = window.confirm("장바구니에 담았습니다. 장바구니를 확인하시겠습니까?");
-      if (confirm === true) {
-        navigate(`/cartpage`);
+      if (response.ok) {
+        const confirm = window.confirm("장바구니에 담았습니다. 장바구니를 확인하시겠습니까?");
+        if (confirm === true) {
+          navigate(`/cartpage`);
+        }
       }
     });
   }
