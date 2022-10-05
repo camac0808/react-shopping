@@ -60,7 +60,9 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
       }),
     }).then((response) => {
       if (response.ok) {
-        const confirm = window.confirm("장바구니에 담았습니다. 장바구니를 확인하시겠습니까?");
+        const confirm = window.confirm(
+          "You have successfully added this item to your cart. Do you want to the cart?"
+        );
         if (confirm === true) {
           navigate(`/cartpage`);
         }
@@ -80,7 +82,7 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
         {sold ? (
           <div>
             <img className="soldout-image" src="img/soldout.png" alt={name}></img>
-            <img src={`${image}`} alt={name} style={{ opacity: 0.3 }}></img>
+            <img src={image} alt={name} style={{ opacity: 0.3 }}></img>
           </div>
         ) : image ? (
           <img className={hover ? "hover" : ""} src={`${image}`} alt={name}></img>

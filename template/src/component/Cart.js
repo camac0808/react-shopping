@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export default function Cart({ name, price, image, detail, id, item}) {
   const [itemId, setItemId] = useState(id);
+
   // 장바구니 X 클릭할 경우
   function removeCart() {
     if (window.confirm("Are you sure you want to remove this item?")) {
@@ -21,7 +22,6 @@ export default function Cart({ name, price, image, detail, id, item}) {
       });
     }
   }
-
   if (itemId === 0) {
     return null;
   }
@@ -31,7 +31,7 @@ export default function Cart({ name, price, image, detail, id, item}) {
       <h1>장바구니</h1>
       <h2>{name}</h2>
       <h2>{price}</h2>
-      <img src={`${image}`} alt={name}></img>
+      <img src={image} alt={name}></img>
       <h2>{detail}</h2>
       <h2>{id}</h2>
       <div className="cart-x-icon">

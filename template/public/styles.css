@@ -244,6 +244,14 @@ header .title {
   cursor: pointer;
 }
 
+/* 구매창 */
+.purchase-container {
+  border: 1px solid black;
+  width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 @media (max-width: 1000px) {
   .main-container {
     flex-direction: column;

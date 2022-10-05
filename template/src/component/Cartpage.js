@@ -6,7 +6,6 @@ export default function Cartpage() {
 
   // filter된 item을 다시 map으로 펼쳐서 변수에 할당해준다.
   const filterItem = items.filter((item) => item.cart === true);
-
   console.log(filterItem);
   return (
     <div className="cart-page">
