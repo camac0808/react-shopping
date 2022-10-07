@@ -6,7 +6,6 @@ export default function Detail() {
   // 버튼 누를때 새로고침 현상 제거
   function onSubmit(e) {
     e.preventDefault();
-
     // console.log(nameRef.current.value)
   }
 

@@ -82,6 +82,7 @@ header .title {
   animation: fadein 0.5s;
   text-align: center;
   position: relative;
+  padding: 10px;
 }
 
 .card-image-container {
@@ -168,7 +169,6 @@ header .title {
   cursor: pointer;
 }
 
-
 @keyframes fadein {
   from {
     opacity: 0;
@@ -246,11 +246,32 @@ header .title {
 
 /* 구매창 */
 .purchase-container {
-  border: 1px solid black;
-  width: 800px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  width: 600px;
   margin: 0 auto;
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
 }
+
+.purchase-image-container {
+  border: 1px solid #eee;
+  padding: 10px;
+  margin-right: 50px;
+}
+
+.purchase-info-container {
+  width: 500px;
+}
+
+.purchase-container button {
+  border-radius: 0px;
+  margin-right: 10px;
+}
+
+
 
 @media (max-width: 1000px) {
   .main-container {
@@ -285,4 +306,32 @@ button:active:not([disabled]) {
 button[disabled] {
   background-color: #ccc;
   box-shadow: none;
+}
+
+/* counter */
+.counter span {
+  cursor: pointer;
+}
+
+.counter .minus, .plus {
+  width: 20px;
+  height: 20px;
+  background: #f2f2f2;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 15px;
+}
+.counter .count {
+  height: 21px;
+  width: 30px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 18px;
 }

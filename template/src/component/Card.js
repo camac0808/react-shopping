@@ -46,7 +46,7 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
     return null;
   }
 
-  // 장바구니 클릭
+  // 장바구니 클릭 후 이동
   function cartClick() {
     // setSold((current) => !current);
     fetch(`http://localhost:3001/items/${id}`, {
