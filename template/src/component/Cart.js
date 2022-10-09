@@ -1,7 +1,8 @@
-import { useState } from "react";
-
-export default function Cart({ name, price, image, detail, id, item}) {
+import { useState, useContext } from "react";
+import { CountContext } from "./../context/CountProvider";
+export default function Cart({ name, price, image, detail, id, item }) {
   const [itemId, setItemId] = useState(id);
+  const { cartCount } = useContext(CountContext);
 
   // 장바구니 X 클릭할 경우
   function removeCart() {
@@ -18,6 +19,7 @@ export default function Cart({ name, price, image, detail, id, item}) {
       }).then((response) => {
         if (response.ok) {
           setItemId(0);
+          cartCount();
         }
       });
     }

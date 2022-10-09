@@ -11,37 +11,39 @@ export default function Main() {
   console.log(items);
 
   return (
-    <main>
-      <div className="main-button-container">
-        <Link to={`/create`}>
-          <button className="btn btn-outline-primary">
-            ADD
+    <div>
+      <main>
+        <div className="main-button-container">
+          <Link to={`/create`}>
+            <button className="btn btn-outline-primary">
+              ADD
+            </button>
+          </Link>
+          <button
+            className="btn btn-outline-primary"
+            onClick={() => setSoldOutClick((current) => !current)}
+          >
+            SOLD OUT
           </button>
-        </Link>
-        <button
-          className="btn btn-outline-primary"
-          onClick={() => setSoldOutClick((current) => !current)}
-        >
-          SOLD OUT
-        </button>
-      </div>
-      <div className="main-container">
-        {items.map((item) => {
-          return (
-            <Card
-              item={item}
-              name={item.name}
-              key={item.id}
-              id={item.id}
-              price={item.price}
-              image={item.image}
-              showSoldOutBtn={soldOutClick}
-              soldOut={item.soldOut}
-              cart={item.cart}
-            />
-          );
-        })}
-      </div>
-    </main>
+        </div>
+        <div className="main-container">
+          {items.map((item) => {
+            return (
+              <Card
+                item={item}
+                name={item.name}
+                key={item.id}
+                id={item.id}
+                price={item.price}
+                image={item.image}
+                showSoldOutBtn={soldOutClick}
+                soldOut={item.soldOut}
+                cart={item.cart}
+              />
+            );
+          })}
+        </div>
+      </main>
+    </div>
   );
 }

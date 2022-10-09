@@ -1,15 +1,25 @@
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { CountContext } from '../context/CountProvider';
 
 export default function Header() {
+  const { badgeCount, cartCount } = useContext(CountContext)
+  cartCount();
+  
+  console.log(badgeCount);
   return (
-  <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-around py-3 mb-4 border-bottom">
+    <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-around py-3 mb-4 border-bottom">
       <div className="title d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
         React Shopping
       </div>
-
       <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><Link to="/" className="nav-link px-2 link-secondary">Home</Link></li>
-        <li><Link to="/cartpage" className="nav-link px-2 link-dark">Cart</Link></li>
+        <li><Link to="/cartpage" className="nav-link px-2 link-dark position-relative">Cart
+        {/* cart badge */}
+          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {badgeCount === 0 ? null : badgeCount}
+          </span></Link>
+        </li>
         <li><Link to="#" className="nav-link px-2 link-dark">FAQs</Link></li>
       </ul>
 

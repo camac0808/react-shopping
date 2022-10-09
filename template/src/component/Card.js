@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { CountContext } from "./../context/CountProvider";
 
 export default function Card({ item: i, name, price, image, id, showSoldOutBtn, soldOut }) {
   const navigate = useNavigate();
@@ -7,6 +8,7 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
   const [item, setItem] = useState(i);
   const [hover, setHover] = useState(false);
   const [sold, setSold] = useState(soldOut);
+  const { cartCount } = useContext(CountContext);
 
   // PUT 아이템(품절) 수정하기
   function toggleSoldOut() {
@@ -60,8 +62,9 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
       }),
     }).then((response) => {
       if (response.ok) {
+        cartCount();
         const confirm = window.confirm(
-          "You have successfully added this item to your cart. Do you want to the cart?"
+          "You have successfully added this item to your cart. Do you want to go to the cart?"
         );
         if (confirm === true) {
           navigate(`/cartpage`);
