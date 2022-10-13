@@ -2,8 +2,8 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
-import { CountContext } from "../context/CountProvider";
-import { useContext } from "react";
+import { useDispatch } from 'react-redux';
+import { counterActions } from '../context/counterSlice';
 
 export default function Purchase() {
   const { id } = useParams();
@@ -11,7 +11,25 @@ export default function Purchase() {
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(price);
   const [item, setItem] = useState([]);
-  const { cartCount } = useContext(CountContext);
+
+
+
+  // redux cartbadgecount dispatch function
+  const dispatch = useDispatch();
+
+  // 장바구니 안에 있는 cart 개수를 세서 reducer action의 payload에 실어서 보내준다
+  async function cartBadgeCount() {
+    let count = 0;
+    const response = await fetch("http://localhost:3001/items")
+    const data = await response.json();
+    data.forEach((item) => {
+      if (item.cart === true) {
+        count += 1;
+      }
+    });
+    console.log(count);
+    dispatch(counterActions.badgeCount(count));
+  }
 
   // async await 함수는 프로미스 객체를 반환 하므로 부수효과 함수가 될 수 없다
   useEffect(() => {
@@ -55,7 +73,7 @@ export default function Purchase() {
         }),
       }).then((response) => {
         if (response.ok) {
-          cartCount();
+          cartBadgeCount();
           window.alert("You have successfully added this item to your cart.");
         }
       });

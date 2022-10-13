@@ -1,6 +1,7 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { CountContext } from "./../context/CountProvider";
+import { useDispatch } from "react-redux";
+import { counterActions } from '../context/counterSlice';
 
 export default function Card({ item: i, name, price, image, id, showSoldOutBtn, soldOut }) {
   const navigate = useNavigate();
@@ -8,7 +9,22 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
   const [item, setItem] = useState(i);
   const [hover, setHover] = useState(false);
   const [sold, setSold] = useState(soldOut);
-  const { cartCount } = useContext(CountContext);
+  
+  // 장바구니 안에 있는 cart 개수를 세서 reducer action의 payload에 실어서 보내준다
+  const dispatch = useDispatch();
+
+  async function cartBadgeCount() {
+    let count = 0;
+    const response = await fetch("http://localhost:3001/items")
+    const data = await response.json();
+    data.forEach((item) => {
+      if (item.cart === true) {
+        count += 1;
+      }
+    });
+    console.log(count);
+    dispatch(counterActions.badgeCount(count));
+  }
 
   // PUT 아이템(품절) 수정하기
   function toggleSoldOut() {
@@ -62,7 +78,7 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
       }),
     }).then((response) => {
       if (response.ok) {
-        cartCount();
+        cartBadgeCount();
         const confirm = window.confirm(
           "You have successfully added this item to your cart. Do you want to go to the cart?"
         );

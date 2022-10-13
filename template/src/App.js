@@ -6,11 +6,9 @@ import Cartpage from "./component/Cartpage";
 import Create from "./component/Create";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./component/Header";
-import CountProvider from './context/CountProvider';
 
 function App() {
   return (
-      <CountProvider>
         <Router basename={`${process.env.PUBLIC_URL}/`}>
           {/* router 안에 다 집어넣어야 오류 안남 */}
           <Header />
@@ -25,7 +23,6 @@ function App() {
             </Routes>
           </div>
         </Router>
-      </CountProvider>
   );
 }
 export default App;

@@ -21,7 +21,7 @@ export default function Detail() {
 
   // useRef를 쓰지 않는 e.target.value 방법
   // input의 입력값 받아서 setItem으로 저장
-  function onChange(e) {
+  function handleChange(e) {
     const { name, value } = e.target;
     setItem((prevItem) => {
       return {
@@ -35,7 +35,7 @@ export default function Detail() {
   const nameRef = useRef(null);
   const priceRef = useRef(null);
   const detailRef = useRef(null);
-  // console.log(nameRef.current.);
+  console.log(nameRef.current);
 
   // POST 아이템 추가하기
   function addItem() {
@@ -67,6 +67,7 @@ export default function Detail() {
     <div className="detail">
       <form className="row g-3" onSubmit={onSubmit}>
         {/* name input */}
+        <h3>상품 추가하기</h3>
         <div className="col-md-6">
           <label className="form-label">Name</label>
           <input
@@ -74,7 +75,7 @@ export default function Detail() {
             value={item.name}
             type="text"
             name="name"
-            onChange={onChange}
+            onChange={handleChange}
             ref={nameRef}
           ></input>
         </div>
@@ -87,7 +88,7 @@ export default function Detail() {
             value={item.price}
             type="number"
             name="price"
-            onChange={onChange}
+            onChange={handleChange}
             ref={priceRef}
           ></input>
         </div>
@@ -100,7 +101,7 @@ export default function Detail() {
             value={item.detail}
             type="text"
             name="detail"
-            onChange={onChange}
+            onChange={handleChange}
             ref={detailRef}
           ></input>
         </div>

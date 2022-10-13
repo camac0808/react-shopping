@@ -1,7 +1,7 @@
 import Card from "./Card";
 import { useState } from "react";
 import useFetch from "./../hooks/useFetch";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function Main() {
   const [soldOutClick, setSoldOutClick] = useState(false);
@@ -13,11 +13,12 @@ export default function Main() {
   return (
     <div>
       <main>
+        <div className="title-container">
+          <h1 style={{ color: "white" }}>REACT SHOPPING</h1>
+        </div>
         <div className="main-button-container">
           <Link to={`/create`}>
-            <button className="btn btn-outline-primary">
-              ADD
-            </button>
+            <button className="btn btn-outline-primary">ADD</button>
           </Link>
           <button
             className="btn btn-outline-primary"

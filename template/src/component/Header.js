@@ -1,31 +1,63 @@
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { CountContext } from '../context/CountProvider';
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { counterActions } from '../context/counterSlice';
+
 
 export default function Header() {
-  const { badgeCount, cartCount } = useContext(CountContext)
-  cartCount();
-  
+  // useSelector는 store의 state를 인자로 받아온다
+  const badgeCount = useSelector((state) => state.counter.count);
+  const dispatch = useDispatch();
+
   console.log(badgeCount);
+
+  async function cartBadgeCount() {
+    let count = 0;
+    const response = await fetch("http://localhost:3001/items")
+    const data = await response.json();
+    data.forEach((item) => {
+      if (item.cart === true) {
+        count += 1;
+      }
+    });
+    console.log(count);
+    dispatch(counterActions.badgeCount(count));
+  }
+  cartBadgeCount();
+
   return (
-    <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-around py-3 mb-4 border-bottom">
-      <div className="title d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+    <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-around py-3 mb-4">
+      <div className="title d-flex align-items-center col-md-3 mb-2 mb-md-0 text-decoration-none">
         React Shopping
       </div>
       <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><Link to="/" className="nav-link px-2 link-secondary">Home</Link></li>
-        <li><Link to="/cartpage" className="nav-link px-2 link-dark position-relative">Cart
-        {/* cart badge */}
-          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {badgeCount === 0 ? null : badgeCount}
-          </span></Link>
+        <li>
+          <Link to="/" className="nav-link px-3">
+            Home
+          </Link>
         </li>
-        <li><Link to="#" className="nav-link px-2 link-dark">FAQs</Link></li>
+        <li>
+          <Link to="/cartpage" className="nav-link px-3 position-relative">
+            Cart
+            {/* cart badge */}
+            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {badgeCount === 0 ? null : badgeCount}
+            </span>
+          </Link>
+        </li>
+        <li>
+          <Link to="#" className="nav-link px-3">
+            FAQs
+          </Link>
+        </li>
       </ul>
 
-      <div className="col-md-3 text-end">
-        <button type="button" className="btn btn-outline-primary me-2">Login</button>
-        <button type="button" className="btn btn-primary">Sign-up</button>
+      <div className="login-container col-md-3 text-end">
+        <button type="button" className="btn btn-outline-primary me-2">
+          Login
+        </button>
+        <button type="button" className="btn btn-primary">
+          Sign-up
+        </button>
       </div>
     </header>
   );

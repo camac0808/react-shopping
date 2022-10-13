@@ -1,8 +1,27 @@
-import { useState, useContext } from "react";
-import { CountContext } from "./../context/CountProvider";
+import { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { counterActions } from '../context/counterSlice';
+
 export default function Cart({ name, price, image, detail, id, item }) {
   const [itemId, setItemId] = useState(id);
-  const { cartCount } = useContext(CountContext);
+
+
+  // redux cartbadgecount dispatch function
+  const dispatch = useDispatch();
+
+  // 장바구니 안에 있는 cart 개수를 세서 reducer action의 payload에 실어서 보내준다
+  async function cartBadgeCount() {
+    let count = 0;
+    const response = await fetch("http://localhost:3001/items")
+    const data = await response.json();
+    data.forEach((item) => {
+      if (item.cart === true) {
+        count += 1;
+      }
+    });
+    console.log(count);
+    dispatch(counterActions.badgeCount(count));
+  }
 
   // 장바구니 X 클릭할 경우
   function removeCart() {
@@ -19,7 +38,7 @@ export default function Cart({ name, price, image, detail, id, item }) {
       }).then((response) => {
         if (response.ok) {
           setItemId(0);
-          cartCount();
+          cartBadgeCount();
         }
       });
     }
