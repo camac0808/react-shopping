@@ -31,12 +31,12 @@ export default function Header() {
       </div>
       <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li>
-          <Link to="/" className="nav-link px-3">
+          <Link to="/" className="nav px-3">
             Home
           </Link>
         </li>
         <li>
-          <Link to="/cartpage" className="nav-link px-3 position-relative">
+          <Link to="/cartpage" className="nav px-3 position-relative">
             Cart
             {/* cart badge */}
             <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -45,7 +45,7 @@ export default function Header() {
           </Link>
         </li>
         <li>
-          <Link to="#" className="nav-link px-3">
+          <Link to="#" className="nav px-3">
             FAQs
           </Link>
         </li>
