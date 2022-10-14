@@ -4,7 +4,7 @@ import useFetch from "./../hooks/useFetch";
 
 export default function Detail() {
   const { id } = useParams();
-  const item = useFetch(`http://localhost:3001/items/${id}`);
+  const item = useFetch(`https://my-json-server.typicode.com/camac0808/react-shopping/items/${id}`);
 
   // Dummy로 할때는 해당 param id값과 item id값을 비교해서 데이터를 가져와야 한다
 

@@ -15,7 +15,7 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
 
   async function cartBadgeCount() {
     let count = 0;
-    const response = await fetch("http://localhost:3001/items")
+    const response = await fetch("https://my-json-server.typicode.com/camac0808/react-shopping/items")
     const data = await response.json();
     data.forEach((item) => {
       if (item.cart === true) {
@@ -29,7 +29,7 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
   // PUT 아이템(품절) 수정하기
   function toggleSoldOut() {
     // setSold((current) => !current);
-    fetch(`http://localhost:3001/items/${id}`, {
+    fetch(`https://my-json-server.typicode.com/camac0808/react-shopping/items/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +67,7 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
   // 장바구니 클릭 후 이동
   function cartClick() {
     // setSold((current) => !current);
-    fetch(`http://localhost:3001/items/${id}`, {
+    fetch(`https://my-json-server.typicode.com/camac0808/react-shopping/items/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
