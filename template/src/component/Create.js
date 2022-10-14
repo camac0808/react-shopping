@@ -39,7 +39,7 @@ export default function Detail() {
 
   // POST 아이템 추가하기
   function addItem() {
-    fetch(`http://localhost:3001/items`, {
+    fetch(`https://my-json-server.typicode.com/camac0808/react-shopping/items`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

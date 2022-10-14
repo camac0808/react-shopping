@@ -48,7 +48,7 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
   // DELETE 아이템 삭제하기
   function deleteItem() {
     // DELETE는 메소드만 써주면 된다
-    fetch(`http://localhost:3001/items/${id}`, {
+    fetch(`https://my-json-server.typicode.com/camac0808/react-shopping/items/${id}`, {
       method: "DELETE",
     }).then((response) => {
       if (response.ok) {
