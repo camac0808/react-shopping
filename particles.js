@@ -1,4 +1,5 @@
 /* eslint-disable eqeqeq */
+/* eslint-disable default-case */
 /* -----------------------------------------------
 /* Author : Vincent Garreau  - vincentgarreau.com
 /* MIT license: http://opensource.org/licenses/MIT
@@ -405,18 +406,21 @@ var pJS = function(tag_id, params){
     if(p.radius_bubble != undefined){
       var radius = p.radius_bubble; 
     }else{
+      // eslint-disable-next-line no-redeclare
       var radius = p.radius;
     }
 
     if(p.opacity_bubble != undefined){
       var opacity = p.opacity_bubble;
     }else{
+      // eslint-disable-next-line no-redeclare
       var opacity = p.opacity;
     }
 
     if(p.color.rgb){
       var color_value = 'rgba('+p.color.rgb.r+','+p.color.rgb.g+','+p.color.rgb.b+','+opacity+')';
     }else{
+      // eslint-disable-next-line no-redeclare
       var color_value = 'hsla('+p.color.hsl.h+','+p.color.hsl.s+'%,'+p.color.hsl.l+'%,'+opacity+')';
     }
 
