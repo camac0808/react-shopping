@@ -1,19 +1,31 @@
 {
-  "posts": [
+  "items": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "running",
+      "price": 100,
+      "soldOut": false,
+      "cart": false,
+      "image": "img/신발1.jfif",
+      "detail": "card 상세페이지 입니다"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "name": "force",
+      "price": 200,
+      "soldOut": false,
+      "cart": false,
+      "image": "img/신발2.jfif",
+      "detail": "love 상세페이지 입니다"
+    },
+    {
+      "id": 3,
+      "name": "air",
+      "price": 300,
+      "soldOut": false,
+      "cart": false,
+      "image": "img/신발3.jfif",
+      "detail": "shop 상세페이지 입니다"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
