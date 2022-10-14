@@ -1,5 +1,4 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable default-case */
+/* eslint-disable no-undef */
 /* -----------------------------------------------
 /* Author : Vincent Garreau  - vincentgarreau.com
 /* MIT license: http://opensource.org/licenses/MIT
