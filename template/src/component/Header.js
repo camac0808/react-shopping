@@ -12,7 +12,7 @@ export default function Header() {
 
   async function cartBadgeCount() {
     let count = 0;
-    const response = await fetch("https://my-json-server.typicode.com/camac0808/react-shopping/items")
+    const response = await fetch("http://localhost:3001/items")
     const data = await response.json();
     data.forEach((item) => {
       if (item.cart === true) {

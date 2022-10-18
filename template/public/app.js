@@ -14,7 +14,6 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 particlesJS(
   "particles-js",
-
   {
     particles: {
       number: {

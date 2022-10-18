@@ -12,7 +12,7 @@ export default function Cart({ name, price, image, detail, id, item }) {
   // 장바구니 안에 있는 cart 개수를 세서 reducer action의 payload에 실어서 보내준다
   async function cartBadgeCount() {
     let count = 0;
-    const response = await fetch("https://my-json-server.typicode.com/camac0808/react-shopping/items")
+    const response = await fetch("http://localhost:3001/items")
     const data = await response.json();
     data.forEach((item) => {
       if (item.cart === true) {
@@ -26,7 +26,7 @@ export default function Cart({ name, price, image, detail, id, item }) {
   // 장바구니 X 클릭할 경우
   function removeCart() {
     if (window.confirm("Are you sure you want to remove this item?")) {
-      fetch(`https://my-json-server.typicode.com/camac0808/react-shopping/items/${id}`, {
+      fetch(`http://localhost:3001/items/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

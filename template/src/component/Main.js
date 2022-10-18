@@ -7,7 +7,7 @@ export default function Main() {
   const [soldOutClick, setSoldOutClick] = useState(false);
 
   // json-server로 api호출 (json-server --watch ../db/items.json --port 3001)
-  const items = useFetch("https://my-json-server.typicode.com/camac0808/react-shopping/items");
+  const items = useFetch("http://localhost:3001/items");
   console.log(items);
 
   return (

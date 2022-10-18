@@ -150,7 +150,7 @@ header .nav:hover {
   padding: 10px;
 }
 
-.card-image-container {
+.card-img-top {
   width: 100%;
   height: 250px;
   position: relative;
@@ -162,7 +162,7 @@ header .nav:hover {
   justify-content: center;
 }
 
-.card-image-container img {
+.card-img-top img {
   width: 100%;
   transition: 0.2s all;
 }
@@ -189,7 +189,7 @@ header .nav:hover {
   color: #ccc;
 }
 
-.card-image-container .more-detail {
+.card-img-top .more-detail {
   width: 200px;
   height: 40px;
   padding: 10px 25px;
@@ -207,10 +207,13 @@ header .nav:hover {
   font-size: 1.5rem;
 }
 
+.card-body {
+  padding: 0 !important;
+}
+
 .card-tag {
   display: flex;
   justify-content: space-around;
-  margin: 10px 10px 0px 10px;
 }
 
 .card-name {

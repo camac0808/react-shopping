@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* -----------------------------------------------
 /* Author : Vincent Garreau  - vincentgarreau.com
 /* MIT license: http://opensource.org/licenses/MIT
@@ -7,6 +6,7 @@
 /* How to use? : Check the GitHub README
 /* v2.0.0
 /* ----------------------------------------------- */
+/* eslint-disable no-undef */
 
 var pJS = function(tag_id, params){
 
@@ -402,24 +402,21 @@ var pJS = function(tag_id, params){
 
     var p = this;
 
-    if(p.radius_bubble != undefined){
+    if(p.radius_bubble !== undefined){
       var radius = p.radius_bubble; 
     }else{
-      // eslint-disable-next-line no-redeclare
       var radius = p.radius;
     }
 
-    if(p.opacity_bubble != undefined){
+    if(p.opacity_bubble !== undefined){
       var opacity = p.opacity_bubble;
     }else{
-      // eslint-disable-next-line no-redeclare
       var opacity = p.opacity;
     }
 
     if(p.color.rgb){
       var color_value = 'rgba('+p.color.rgb.r+','+p.color.rgb.g+','+p.color.rgb.b+','+opacity+')';
     }else{
-      // eslint-disable-next-line no-redeclare
       var color_value = 'hsla('+p.color.hsl.h+','+p.color.hsl.s+'%,'+p.color.hsl.l+'%,'+opacity+')';
     }
 

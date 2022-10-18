@@ -20,7 +20,7 @@ export default function Purchase() {
   // 장바구니 안에 있는 cart 개수를 세서 reducer action의 payload에 실어서 보내준다
   async function cartBadgeCount() {
     let count = 0;
-    const response = await fetch("https://my-json-server.typicode.com/camac0808/react-shopping/items")
+    const response = await fetch("http://localhost:3001/items")
     const data = await response.json();
     data.forEach((item) => {
       if (item.cart === true) {
@@ -36,7 +36,7 @@ export default function Purchase() {
     // json-server로 더미db 연결해서 간단한 api만듬
     async function getItem() {
       try {
-        const response = await fetch(`https://my-json-server.typicode.com/camac0808/react-shopping/items/${id}`);
+        const response = await fetch(`http://localhost:3001/items/${id}`);
         const data = await response.json();
         setItem(data);
         setPrice(data.price);
@@ -62,7 +62,7 @@ export default function Purchase() {
 
   function cartClick() {
     if (window.confirm("Are you sure you want to cart this item?")) {
-      fetch(`https://my-json-server.typicode.com/camac0808/react-shopping/items/${id}`, {
+      fetch(`http://localhost:3001/items/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

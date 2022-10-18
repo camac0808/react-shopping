@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { counterActions } from '../context/counterSlice';
+import { counterActions } from "../context/counterSlice";
 
 export default function Card({ item: i, name, price, image, id, showSoldOutBtn, soldOut }) {
   const navigate = useNavigate();
@@ -9,13 +9,13 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
   const [item, setItem] = useState(i);
   const [hover, setHover] = useState(false);
   const [sold, setSold] = useState(soldOut);
-  
+
   // 장바구니 안에 있는 cart 개수를 세서 reducer action의 payload에 실어서 보내준다
   const dispatch = useDispatch();
 
   async function cartBadgeCount() {
     let count = 0;
-    const response = await fetch("https://my-json-server.typicode.com/camac0808/react-shopping/items")
+    const response = await fetch("http://localhost:3001/items");
     const data = await response.json();
     data.forEach((item) => {
       if (item.cart === true) {
@@ -29,7 +29,7 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
   // PUT 아이템(품절) 수정하기
   function toggleSoldOut() {
     // setSold((current) => !current);
-    fetch(`https://my-json-server.typicode.com/camac0808/react-shopping/items/${id}`, {
+    fetch(`http://localhost:3001/items/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -47,15 +47,17 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
 
   // DELETE 아이템 삭제하기
   function deleteItem() {
-    // DELETE는 메소드만 써주면 된다
-    fetch(`https://my-json-server.typicode.com/camac0808/react-shopping/items/${id}`, {
-      method: "DELETE",
-    }).then((response) => {
-      if (response.ok) {
-        // 이부분은 책 참고해서 다른 방법도 찾아봐야될듯
-        setItem({ id: 0 });
-      }
-    });
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      // DELETE는 메소드만 써주면 된다
+      fetch(`http://localhost:3001/items/${id}`, {
+        method: "DELETE",
+      }).then((response) => {
+        if (response.ok) {
+          // 이부분은 책 참고해서 다른 방법도 찾아봐야될듯
+          setItem({ id: 0 });
+        }
+      });
+    }
   }
 
   // delete 버튼 누르면 null 반환
@@ -67,7 +69,7 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
   // 장바구니 클릭 후 이동
   function cartClick() {
     // setSold((current) => !current);
-    fetch(`https://my-json-server.typicode.com/camac0808/react-shopping/items/${id}`, {
+    fetch(`http://localhost:3001/items/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -93,7 +95,7 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
     <div className="card">
       {/* 마우스 hover 이벤트 추가 */}
       <div
-        className="card-image-container"
+        className="card-img-top"
         onMouseOver={() => setHover(true)}
         onMouseOut={() => setHover(false)}
       >
@@ -116,7 +118,7 @@ export default function Card({ item: i, name, price, image, id, showSoldOutBtn, 
         </Link>
       </div>
 
-      <div className={`card-info ${sold ? "off" : ""}`}>
+      <div className={`card-body ${sold ? "off" : ""}`}>
         {/* 카드 이름 가격 */}
         <div className={sold ? "card-tag off" : "card-tag"}>
           <div className="card-name">{name}</div>
